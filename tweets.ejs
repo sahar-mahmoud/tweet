@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tweets</title>
+</head>
+<body>
+    <h2>All Tweets</h2>
+    <ul>
+        <% tweets.forEach(tweet => { %>
+            <li>
+                <h3><%= tweet.title %></h3>
+                <p><%= tweet.tweet %></p>
+                <small>Created at: <%= tweet.createdAt %></small>
+                <br>
+                <form action="/delete-tweet/<%= tweet._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a href="/edit-tweet/<%= tweet._id %>">Edit</a>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/add-tweet">Add Another Tweet</a>
+</body>
+</html>
